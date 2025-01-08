@@ -1,0 +1,127 @@
+<html><head><base href="https://cdn.jsdelivr.net/"/>
+    <title>Dashboard Odontológico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-light: #E0F4F4;
+            --primary-dark: #2C7A7B;
+            --secondary-light: #F0F9F9;
+            --secondary-dark: #1D4044;
+            --accent-light: #4FD1C5;
+            --accent-dark: #319795;
+        }
+
+        body {
+            background-color: var(--secondary-light);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            height: 100vh;
+        }
+
+        .sidebar {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 20px;
+        }
+
+        .main-content {
+            background-color: var(--primary-light);
+            padding: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-menu a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: var(--accent-light);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar">
+            <h2>Clínica Dental</h2>
+            <nav class="sidebar-menu">
+                <a href="https://example.com/pacientes">Pacientes</a>
+                <a href="https://example.com/citas">Citas</a>
+                <a href="https://example.com/tratamientos">Tratamientos</a>
+                <a href="https://example.com/inventario">Inventario</a>
+                <a href="https://example.com/reportes">Reportes</a>
+            </nav>
+        </div>
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card p-3">
+                        <h3>Pacientes Nuevos</h3>
+                        <p class="display-4">25</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-3">
+                        <h3>Citas Programadas</h3>
+                        <p class="display-4">12</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card p-3">
+                        <h3>Tratamientos</h3>
+                        <p class="display-4">48</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card p-3">
+                        <h3>Próximas Citas</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Paciente</th>
+                                    <th>Tratamiento</th>
+                                    <th>Fecha</th>
+                                    <th>Hora</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>María Rodríguez</td>
+                                    <td>Limpieza Dental</td>
+                                    <td>15/06/2023</td>
+                                    <td>10:00 AM</td>
+                                </tr>
+                                <tr>
+                                    <td>Carlos Mendez</td>
+                                    <td>Ortodoncia</td>
+                                    <td>16/06/2023</td>
+                                    <td>02:30 PM</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

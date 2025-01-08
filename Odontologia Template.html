@@ -1,0 +1,181 @@
+<html><head><base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Odontológico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00bcd4;
+            --secondary-color: #4dd0e1;
+            --accent-color: #b2ebf2;
+        }
+        .dental-icon {
+            transition: transform 0.3s ease;
+        }
+        .dental-icon:hover {
+            transform: scale(1.1);
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .jaw-animation {
+            animation: jawMove 2s ease-in-out infinite;
+        }
+        @keyframes jawMove {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex">
+        <!-- Sidebar -->
+        <nav class="bg-[#00bcd4] w-64 p-4 text-white">
+            <div class="flex items-center mb-8">
+                <!-- Animated Jaw SVG -->
+                <svg class="w-12 h-12 mr-2 jaw-animation" viewBox="0 0 100 100" fill="white">
+                    <path d="M85,35c0-19.33-15.67-35-35-35S15,15.67,15,35c0,12.93,7.02,24.21,17.45,30.28
+                        C24.89,70.95,20,79.61,20,89c0,5.52,4.48,10,10,10h40c5.52,0,10-4.48,10-10c0-9.39-4.89-18.05-12.45-23.72
+                        C77.98,59.21,85,47.93,85,35z M65,89H35c-2.76,0-5-2.24-5-5c0-13.79,11.21-25,25-25s25,11.21,25,25C80,86.76,77.76,89,75,89z
+                        M50,55c-11.05,0-20-8.95-20-20s8.95-20,20-20s20,8.95,20,20S61.05,55,50,55z"/>
+                </svg>
+                <h1 class="text-xl font-bold">DentalCare Pro</h1>
+            </div>
+            <ul>
+                <li class="mb-4">
+                    <a href="https://example.com/dashboard" class="flex items-center hover:bg-[#4dd0e1] p-2 rounded">
+                        <i class="fas fa-home mr-2"></i> Dashboard
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="https://example.com/patients" class="flex items-center hover:bg-[#4dd0e1] p-2 rounded">
+                        <i class="fas fa-users mr-2"></i> Pacientes
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="https://example.com/appointments" class="flex items-center hover:bg-[#4dd0e1] p-2 rounded">
+                        <i class="fas fa-calendar-alt mr-2"></i> Citas
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="https://example.com/treatments" class="flex items-center hover:bg-[#4dd0e1] p-2 rounded">
+                        <i class="fas fa-tooth mr-2"></i> Tratamientos
+                    </a>
+                </li>
+                <li class="mb-4">
+                    <a href="https://example.com/finance" class="flex items-center hover:bg-[#4dd0e1] p-2 rounded">
+                        <i class="fas fa-dollar-sign mr-2"></i> Finanzas
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="flex-1 p-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <!-- Stat Cards -->
+                <div class="bg-white p-6 rounded-lg shadow-md stat-card transition-all duration-300">
+                    <div class="flex items-center">
+                        <div class="bg-[#b2ebf2] p-3 rounded-full dental-icon">
+                            <i class="fas fa-user-plus text-[#00bcd4] text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-gray-500">Nuevos Pacientes</h3>
+                            <p class="text-2xl font-bold">24</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md stat-card transition-all duration-300">
+                    <div class="flex items-center">
+                        <div class="bg-[#b2ebf2] p-3 rounded-full dental-icon">
+                            <i class="fas fa-calendar-check text-[#00bcd4] text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-gray-500">Citas Hoy</h3>
+                            <p class="text-2xl font-bold">12</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md stat-card transition-all duration-300">
+                    <div class="flex items-center">
+                        <div class="bg-[#b2ebf2] p-3 rounded-full dental-icon">
+                            <i class="fas fa-dollar-sign text-[#00bcd4] text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="text-gray-500">Ingresos Mensuales</h3>
+                            <p class="text-2xl font-bold">$15,480</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-bold mb-4">Tratamientos Realizados</h2>
+                    <canvas id="treatmentsChart"></canvas>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-xl font-bold mb-4">Pacientes por Mes</h2>
+                    <canvas id="patientsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const treatmentsCtx = document.getElementById('treatmentsChart').getContext('2d');
+        const patientsCtx = document.getElementById('patientsChart').getContext('2d');
+
+        new Chart(treatmentsCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Limpieza', 'Extracciones', 'Ortodoncia', 'Implantes', 'Endodoncias'],
+                datasets: [{
+                    data: [30, 15, 25, 10, 20],
+                    backgroundColor: [
+                        '#00bcd4',
+                        '#4dd0e1',
+                        '#b2ebf2',
+                        '#80deea',
+                        '#26c6da'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        new Chart(patientsCtx, {
+            type: 'line',
+            data: {
+                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Nuevos Pacientes',
+                    data: [65, 59, 80, 81, 56, 55],
+                    fill: false,
+                    borderColor: '#00bcd4',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body></html>
